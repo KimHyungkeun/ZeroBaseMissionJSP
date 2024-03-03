@@ -62,7 +62,7 @@
             type: "POST", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
             url: "./JavaExecute/updateBookMarkGroupDB.jsp", // Java 코드를 실행할 JSP 파일의 경로
             data: { id:id, groupName: document.getElementById("groupName").value, orders: document.getElementById("orders").value },
-            success: function(response) {
+            success: function() {
                 location.href='./bookmark-group-edit-submit.jsp';
             },
             error: function(xhr, status, error) {

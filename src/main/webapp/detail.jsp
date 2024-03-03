@@ -101,7 +101,7 @@
                 bookmarkGroupName: bookmarkGroupName,
                 wifiMgrNo:wifiMgrNo,
                 wifiName:wifiName},
-                success: function(response) {
+                success: function() {
                     location.href='./bookmark-add-submit.jsp';
                 },
                 error: function(xhr, status, error) {
