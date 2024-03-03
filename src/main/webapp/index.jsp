@@ -63,29 +63,28 @@
 <script>
 
 
+
     function getPos() {
-        var request = new XMLHttpRequest();
-        var url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDrUM8HBYCtuNfkmCWSz6svYaDFispjjGA'
-        request.open('POST', url);
-        request.send();
-        request.onload = function() {
-            const obj = JSON.parse(request.response);
-            document.getElementById('lat').value = obj.location.lat;
-            document.getElementById('lnt').value = obj.location.lng;
+
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                document.getElementById('lat').value = pos.coords.latitude;
+                document.getElementById('lnt').value = pos.coords.longitude;
+            });
+
 
             $.ajax({
                 type: "POST", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
                 url: "./JavaExecute/insertHistorysDB.jsp", // Java 코드를 실행할 JSP 파일의 경로
                 data: { lat: document.getElementById("lat").value, lnt: document.getElementById("lnt").value },
-                success: function(response) {
-
+                success: function() {
+                    console.log("히스토리 추가")
                 },
                 error: function(xhr, status, error) {
                     // 오류 처리
                     alert("오류 발생: " + error);
                 }
             });
-        }
+
 
     }
     function getNearWifi() {
@@ -127,6 +126,7 @@
                     xSwifiMainNm.innerText = element.xSwifiMainNm;
                     xSwifiMainNm.style = "cursor:pointer;color:blue;text-decoration: underline;";
                     xSwifiMainNm.addEventListener("click", function() {
+
                         const form = document.createElement('form');
                         form.setAttribute('method', 'post'); // 전송 방식 결정 (get or post)
                         form.setAttribute('action', "./detail.jsp?mgrNo=" + xSwifiMgrNo.innerText); // 전송할 url 지정
