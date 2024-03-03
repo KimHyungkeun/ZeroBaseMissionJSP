@@ -32,7 +32,8 @@
         <%
             request.setCharacterEncoding("utf-8");
             String mgrNo = URLDecoder.decode(request.getQueryString().split("=")[1], "UTF-8");
-            String distance = request.getParameter("distance");
+            String lat = request.getParameter("lat");
+            String lnt = request.getParameter("lnt");
 
             SelectDB selectDB = new SelectDB();
             selectDB.connect();
@@ -41,7 +42,7 @@
             out.write("<option value=\"\">북마크 그룹 이름 선택</option>");
 
             Map<Integer, String> groupNameList = selectDB.selectBookMarkGroupNameList();
-            MainHome mainHome = selectDB.selectOneWiFiInfo(mgrNo);
+            MainHome mainHome = selectDB.selectOneWiFiInfo(mgrNo, lat, lnt);
             for (Map.Entry<Integer, String> map : groupNameList.entrySet()) {
                 out.write(String.format("<option id=%d value=\"%s\">%s</option>", map.getKey(), map.getValue(), map.getValue()));
             };
@@ -70,7 +71,7 @@
                     "            <tr><th>Y좌표</th><th>%f</th></tr>\n" +
                     "            <tr><th>작업일자</th><th>%s</th></tr>\n" +
                     "            </thead>\n" +
-                    "        </table>", distance,
+                    "        </table>", mainHome.getDistance(),
                     mainHome.getXSwifiMgrNo(),
                     mainHome.getXSwifiWrdofc(),
                     mainHome.getXSwifiMainNm(),

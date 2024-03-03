@@ -237,9 +237,11 @@ public class SelectDB extends MariaDBConnector{
         return bookMarkList;
     }
 
-    public MainHome selectOneWiFiInfo(String mgrNo) {
+    public MainHome selectOneWiFiInfo(String mgrNo, String lat, String lnt) {
 
         MainHome mainHome = new MainHome();
+        double dblLat = Double.parseDouble(lat);
+        double dblLnt = Double.parseDouble(lnt);
 
 
         try {
@@ -249,6 +251,11 @@ public class SelectDB extends MariaDBConnector{
             rs = stmt.executeQuery(selectSQL);
 
             while (rs.next()) {
+
+                double xDist =  Math.abs(dblLat - Double.parseDouble(rs.getString("LAT")));
+                double yDist = Math.abs(dblLnt - Double.parseDouble(rs.getString("LNT")));
+                double dist = Math.sqrt(Math.pow(xDist,2) + Math.pow(yDist,2));
+                mainHome.setDistance(String.format("%.4f", dist));
 
                 mainHome.setXSwifiMgrNo(rs.getString("x_swifi_mgr_no"));
                 mainHome.setXSwifiWrdofc(rs.getString("x_swifi_wrdofc"));

@@ -131,12 +131,18 @@
                         form.setAttribute('method', 'post'); // 전송 방식 결정 (get or post)
                         form.setAttribute('action', "./detail.jsp?mgrNo=" + xSwifiMgrNo.innerText); // 전송할 url 지정
 
-                        const data = document.createElement('input'); // input 태그 생성
-                        data.setAttribute('type', 'hidden'); // type = hidden
-                        data.setAttribute('name', 'distance'); // 데이터의 key
-                        data.setAttribute('value', distance.innerText ); // 데이터의 value (여기서는 data)
+                        const data1 = document.createElement('input'); // input 태그 생성
+                        data1.setAttribute('type', 'hidden'); // type = hidden
+                        data1.setAttribute('name', 'lat'); // 데이터의 key
+                        data1.setAttribute('value', document.getElementById("lat").value ); // 데이터의 value (여기서는 data)
+                        form.appendChild(data1);
 
-                        form.appendChild(data);
+                        const data2 = document.createElement('input'); // input 태그 생성
+                        data2.setAttribute('type', 'hidden'); // type = hidden
+                        data2.setAttribute('name', 'lnt'); // 데이터의 key
+                        data2.setAttribute('value', document.getElementById("lnt").value ); // 데이터의 value (여기서는 data)
+                        form.appendChild(data2);
+
                         document.body.appendChild(form);
                         form.submit();
 
