@@ -5,29 +5,8 @@
 <html>
 <head>
     <title>북마크 그룹</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<style>
-    table, th, td{
-        border-collapse: collapse;
-        border: 1px solid;
-        border-color: gray;
-    }
-
-    table {
-        width: 100%;
-    }
-    tr:nth-child(odd){background-color: #f2f2f2}
-    tr {height : 30px}
-    th {
-        background-color: #04AA6D;
-        color: white;
-        height: 50px;
-        text-align:center;
-    }
-    td {
-        color: black;
-    }
-</style>
 <body>
     <h1>북마크 그룹</h1>
     <p>

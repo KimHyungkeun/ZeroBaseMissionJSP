@@ -6,29 +6,8 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>위치 히스토리 목록</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<style>
-    table, th, td{
-        border-collapse: collapse;
-        border: 1px solid;
-        border-color: gray;
-        text-align:center;
-    }
-
-    table {
-        width: 100%;
-    }
-    tr:nth-child(odd){background-color: #f2f2f2}
-    tr {height : 30px}
-    th {
-        background-color: #04AA6D;
-        color: white;
-        height: 50px;
-    }
-    td {
-        color: black;
-    }
-</style>
 <body>
 <h1>위치 히스토리 목록</h1>
 <p>

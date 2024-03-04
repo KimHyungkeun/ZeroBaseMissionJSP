@@ -5,28 +5,8 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>북마크 그룹 삭제</title>
+    <link rel="stylesheet" href="css/styleEditTable.css" type="text/css">
 </head>
-<style>
-    table, th, td{
-        border-collapse: collapse;
-        border: 1px solid;
-        border-color: gray;
-    }
-    table {
-        width: 60%;
-    }
-    tr:nth-child(odd){background-color: #f2f2f2}
-    tr {height : 30px}
-    th {
-        background-color: #04AA6D;
-        color: white;
-        height: 50px;
-        text-align:center;
-    }
-    td {
-        color: black;
-    }
-</style>
 <body>
 <h1>북마크 그룹 삭제</h1>
 <p>

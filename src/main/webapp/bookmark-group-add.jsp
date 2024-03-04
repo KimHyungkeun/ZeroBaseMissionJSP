@@ -3,42 +3,22 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>북마크 그룹 추가</title>
+    <link rel="stylesheet" href="css/styleEditTable.css" type="text/css">
 </head>
-<style>
-    table, th, td{
-        border-collapse: collapse;
-        border: 1px solid;
-        border-color: gray;
-    }
 
-    table {
-        width: 60%;
-    }
-    tr:nth-child(odd){background-color: #f2f2f2}
-    tr {height : 30px}
-    th {
-        background-color: #04AA6D;
-        color: white;
-        height: 50px;
-        text-align:center;
-    }
-    td {
-        color: black;
-    }
-</style>
-    <body>
-        <h1>북마크 그룹 추가</h1>
-        <p>
-            <a href="CRUD_PAGE">홈</a>
-            |
-            <a href="historys.jsp">위치 히스토리 목록</a>
-            |
-            <a href="./load-wifi.jsp">OpenAPI 와이파이 정보 가져오기</a>
-            |
-            <a href="./bookmark-list.jsp">북마크 보기</a>
-            |
-            <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
-        </p>
+<body>
+    <h1>북마크 그룹 추가</h1>
+    <p>
+        <a href="CRUD_PAGE">홈</a>
+        |
+        <a href="historys.jsp">위치 히스토리 목록</a>
+        |
+        <a href="./load-wifi.jsp">OpenAPI 와이파이 정보 가져오기</a>
+        |
+        <a href="./bookmark-list.jsp">북마크 보기</a>
+        |
+        <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
+    </p>
     <table>
         <tr>
             <th>북마크 그룹 이름</th>
@@ -69,5 +49,5 @@
 
         }
     </script>
-    </body>
+</body>
 </html>
