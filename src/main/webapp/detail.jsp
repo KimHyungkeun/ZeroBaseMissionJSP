@@ -50,6 +50,7 @@
             selectDB.disconnect();
 
             out.write("</select>");
+            out.write("&nbsp;");
             out.write(String.format("<input type=\"button\" onClick=\"insertBookMark('%s', '%s')\" value=\"북마크 추가하기\">", mainHome.getXSwifiMgrNo(), mainHome.getXSwifiMainNm()));
 
             out.write(String.format("<table>\n" +

@@ -20,7 +20,7 @@
     |
     <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
 </p>
-<p><input type="button" value="북마크 그룹 이름 추가" onclick="location.href='./bookmark-group-add.jsp'"></p>
+
 <%
     request.setCharacterEncoding("utf-8");
 

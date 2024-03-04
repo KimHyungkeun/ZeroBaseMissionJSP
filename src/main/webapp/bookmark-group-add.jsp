@@ -29,7 +29,7 @@
             <td><input type="text" id="orders" value=""></td>
         </tr>
         <tr>
-            <th><input type="button" value="추가" onclick="addGroupName()"></th>
+            <input type="button" value="추가" onclick="addGroupName()">
         </tr>
     </table>
     <script>
