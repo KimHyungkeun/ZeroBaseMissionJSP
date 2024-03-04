@@ -20,6 +20,7 @@
     |
     <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
 </p>
+<p>북마크 그룹 이름을 삭제하시겠습니까?</p>
 <table>
     <tr>
         <th>북마크 그룹 이름</th>
@@ -30,7 +31,7 @@
         <td><input type="text" id="orders" value=""></td>
     </tr>
     <tr>
-        <th><input type="button" value="삭제" onclick="deleteBookMarkGroup()"></th>
+        <td colspan="100%" style="text-align: center"><a href="./bookmark-group.jsp">돌아가기</a> | <input type="button" value="삭제" onclick="deleteBookMarkGroup()"></td>
     </tr>
 </table>
 <%

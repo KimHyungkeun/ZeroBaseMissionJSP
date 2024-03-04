@@ -20,7 +20,7 @@
     |
     <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
 </p>
-
+<p>북마크를 삭제하시겠습니까?</p>
 <%
     String query = request.getQueryString();
     int id = Integer.parseInt(query.split("=")[1]);
@@ -43,7 +43,7 @@
             "        <td><p>%s</p></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "        <th><a href=\"./bookmark-list.jsp\">돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></th>\n" +
+            "        <td colspan=\"100%%\" style=\"text-align: center\"><a href=\"./bookmark-list.jsp\">돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></td>\n" +
             "    </tr>\n" +
             "</table>", bookMarkList.getBookmarkGroupName(), bookMarkList.getWifiName(), bookMarkList.getRegisterDate()));
 %>

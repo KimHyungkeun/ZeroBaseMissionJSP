@@ -27,7 +27,7 @@
 </p>
 
 <table id="main_table">
-    <tr>
+    <tr id = "col">
         <th>거리(Km)</th>
         <th>관리번호</th>
         <th>자치구</th>
@@ -46,10 +46,12 @@
         <th>Y좌표</th>
         <th>작업일자</th>
     </tr>
+    <tr id = "foot">
+        <td colspan="100%">위치 정보를 입력한 후에 조회해 주세요.</td>
+    </tr>
 </table>
 
 <script>
-
     function getPos() {
         navigator.geolocation.getCurrentPosition(function(pos) {
             document.getElementById("lat").value = pos.coords.latitude;
@@ -69,17 +71,19 @@
             });
         });
     }
+
     function getNearWifi() {
         $.ajax({
             type: "GET", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
             url: "./JavaExecute/selectMainHomeDB.jsp", // Java 코드를 실행할 JSP 파일의 경로
             data: { lat: document.getElementById("lat").value, lnt:document.getElementById("lnt").value },
             success: function(response) {
+                const table = document.getElementById('main_table');
+                table.deleteRow(1);
 
                 // Java 코드 실행 결과를 처리
                 const objArr = JSON.parse(response);
                 for(var element of objArr) {
-                    const table = document.getElementById('main_table');
                     const newRow = table.insertRow();
 
                     // 테이블 각각 열 정의
