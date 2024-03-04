@@ -95,6 +95,11 @@
             const bookmarkGroupId  = bookmarkGroup.options[bookmarkGroup.selectedIndex].id;
             const bookmarkGroupName = bookmarkGroup.value;
 
+            if (bookmarkGroupName == null || (typeof bookmarkGroupName === "string" && bookmarkGroupName.length === 0)) {
+                alert("북마크를 선택해야 합니다.");
+                return;
+            }
+
             $.ajax({
                 type: "POST", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
                 url: "./JavaExecute/insertBookMarkDB.jsp", // Java 코드를 실행할 JSP 파일의 경로

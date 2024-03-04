@@ -22,7 +22,7 @@
     <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
 </p>
 
-<table>
+<table id = "history_table">
         <tr>
             <th>ID</th>
             <th>X좌표</th>
@@ -30,23 +30,27 @@
             <th>조회일자</th>
             <th>비고</th>
         </tr>
-    <tbody>
+
         <%
             SelectDB selectDB = new SelectDB();
             selectDB.connect();
             List<Historys> historysList = selectDB.selectHistorysData();
-            for (Historys ele : historysList) {
-                out.write("<tr id=" + ele.getId() + ">");
-                out.write("<td>" + ele.getId() + "</td>");
-                out.write("<td>" + ele.getXPos() + "</td>");
-                out.write("<td>" + ele.getYPos() + "</td>");
-                out.write("<td>" + ele.getCheckDate() + "</td>");
-                out.write("<td style=\"text-align:center;\">" + "<button onclick=\"deleteHistory(this)\">삭제</button>" + "</td>");
-                out.write("</tr>");
+            if (historysList.isEmpty()) {
+                out.write("<tr><td colspan=\"100%\">히스토리가 없습니다.</td></tr>");
+            } else {
+                for (Historys ele : historysList) {
+                    out.write("<tr id=" + ele.getId() + ">");
+                    out.write("<td>" + ele.getId() + "</td>");
+                    out.write("<td>" + ele.getXPos() + "</td>");
+                    out.write("<td>" + ele.getYPos() + "</td>");
+                    out.write("<td>" + ele.getCheckDate() + "</td>");
+                    out.write("<td style=\"text-align:center;\">" + "<button onclick=\"deleteHistory(this)\">삭제</button>" + "</td>");
+                    out.write("</tr>");
+                }
             }
             selectDB.disconnect();
         %>
-    </tbody>
+
 </table>
 <script>
     function deleteHistory(btn) {
@@ -59,14 +63,22 @@
             type: "POST", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
             url: "./JavaExecute/deleteHistorysDB.jsp", // Java 코드를 실행할 JSP 파일의 경로
             data: {id: rowId},
-            success: function (response) {
-
+            success: function () {
+                console.log("히스토리 삭제 완료 :" + rowId);
             },
             error: function (xhr, status, error) {
                 // 오류 처리
                 alert("오류 발생: " + error);
             }
         });
+
+        if (document.getElementById("history_table").getElementsByTagName("tr").length === 1) {
+            const row = document.getElementById("history_table").insertRow();
+            const td = row.insertCell(0);
+            td.colSpan = 100;
+            td.innerText = "히스토리가 없습니다.";
+            td.style.textAlign = "center";
+        }
 
     }
 </script>

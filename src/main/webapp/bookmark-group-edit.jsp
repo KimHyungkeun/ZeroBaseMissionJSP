@@ -30,7 +30,7 @@
         <td><input type="text" id="orders" value=""></td>
     </tr>
     <tr>
-        <td colspan="100%" style="text-align: center"><a href="./bookmark-group.jsp">돌아가기</a> | <input style="text-align: center;" type="button" value="수정" onclick="editGroup()"></td>
+        <td colspan="100" style="text-align: center"><a href="./bookmark-group.jsp">돌아가기</a> | <input style="text-align: center;" type="button" value="수정" onclick="editGroup()"></td>
     </tr>
 </table>
 <%

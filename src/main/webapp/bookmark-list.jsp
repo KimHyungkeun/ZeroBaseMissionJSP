@@ -38,16 +38,21 @@
     out.write("<th>등록일자</th>");
     out.write("<th>비고</th>");
     out.write("</tr>");
-    out.write("<tbody>");
-    for (BookMarkList ele : bookMarkList) {
-        out.write("<tr" + "id="+ele.getId() + ">");
-        out.write("<td>" + ele.getId() + "</td>");
-        out.write("<td>" + ele.getBookmarkGroupName() + "</td>");
-        out.write("<td>" + ele.getWifiName() + "</td>");
-        out.write("<td>" + ele.getRegisterDate() + "</td>");
-        out.write(String.format("<td style=\"text-align:center;\"><a href=\"./bookmark-delete.jsp?id=%d\">삭제</a></td>", ele.getId(), ele.getId()));
-        out.write("</tr>");
+
+    if (bookMarkList.isEmpty()) {
+        out.write("<tr><td colspan=\"100\">등록된 북마크가 없습니다.</td></tr>");
+    } else {
+        for (BookMarkList ele : bookMarkList) {
+            out.write("<tr" + "id="+ele.getId() + ">");
+            out.write("<td>" + ele.getId() + "</td>");
+            out.write("<td>" + ele.getBookmarkGroupName() + "</td>");
+            out.write("<td>" + ele.getWifiName() + "</td>");
+            out.write("<td>" + ele.getRegisterDate() + "</td>");
+            out.write(String.format("<td style=\"text-align:center;\"><a href=\"./bookmark-delete.jsp?id=%d\">삭제</a></td>", ele.getId(), ele.getId()));
+            out.write("</tr>");
+        }
     }
+
     out.write("</table>");
 %>
 <script>
