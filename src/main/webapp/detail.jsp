@@ -9,11 +9,25 @@
     <title>와이파이 정보 구하기</title>
 </head>
 <style>
-    table, th, td {
+    table, th, td{
+        border-collapse: collapse;
         border: 1px solid;
+        border-color: gray;
     }
+
     table {
         width: 50%;
+    }
+    tr:nth-child(odd){background-color: #f2f2f2}
+    tr {height : 30px}
+    th {
+        background-color: #04AA6D;
+        color: white;
+        height: 35px;
+        text-align:center;
+    }
+    td {
+        color: black;
     }
 </style>
     <body>
@@ -52,25 +66,23 @@
             out.write(String.format("<input type=\"button\" onClick=\"insertBookMark('%s', '%s')\" value=\"북마크 추가하기\">", mainHome.getXSwifiMgrNo(), mainHome.getXSwifiMainNm()));
 
             out.write(String.format("<table>\n" +
-                    "            <thead>\n" +
-                    "            <tr><th>거리(Km)</th><th>%s</th></tr>\n" +
-                    "            <tr><th>관리번호</th><th>%s</th></tr>\n" +
-                    "            <tr><th>자치구</th><th>%s</th></tr>\n" +
-                    "            <tr><th>와이파이명</th><th>%s</th></tr>\n" +
-                    "            <tr><th>도로명주소</th><th>%s</th></tr>\n" +
-                    "            <tr><th>상세주소</th><th>%s</th></tr>\n" +
-                    "            <tr><th>설치위치(층)</th><th>%s</th></tr>\n" +
-                    "            <tr><th>설치유형</th><th>%s</th></tr>\n" +
-                    "            <tr><th>설치기관</th><th>%s</th></tr>\n" +
-                    "            <tr><th>서비스구분</th><th>%s</th></tr>\n" +
-                    "            <tr><th>망종류</th><th>%s</th></tr>\n" +
-                    "            <tr><th>설치년도</th><th>%s</th></tr>\n" +
-                    "            <tr><th>실내외구분</th><th>%s</th></tr>\n" +
-                    "            <tr><th>WiFi 접속환경</th>%s<th></th></tr>\n" +
-                    "            <tr><th>X좌표</th><th>%f</th></tr>\n" +
-                    "            <tr><th>Y좌표</th><th>%f</th></tr>\n" +
-                    "            <tr><th>작업일자</th><th>%s</th></tr>\n" +
-                    "            </thead>\n" +
+                    "            <tr><th>거리(Km)</th><td>%s</td></tr>\n" +
+                    "            <tr><th>관리번호</th><td>%s</td></tr>\n" +
+                    "            <tr><th>자치구</th><td>%s</td></tr>\n" +
+                    "            <tr><th>와이파이명</th><td>%s</td></tr>\n" +
+                    "            <tr><th>도로명주소</th><td>%s</td></tr>\n" +
+                    "            <tr><th>상세주소</th><td>%s</td></tr>\n" +
+                    "            <tr><th>설치위치(층)</th><td>%s</td></tr>\n" +
+                    "            <tr><th>설치유형</th><td>%s</td></tr>\n" +
+                    "            <tr><th>설치기관</th><td>%s</td></tr>\n" +
+                    "            <tr><th>서비스구분</th><td>%s</td></tr>\n" +
+                    "            <tr><th>망종류</th><td>%s</td></tr>\n" +
+                    "            <tr><th>설치년도</th><td>%s</td></tr>\n" +
+                    "            <tr><th>실내외구분</th><td>%s</td></tr>\n" +
+                    "            <tr><th>WiFi 접속환경</th><td>%s</td></tr>\n" +
+                    "            <tr><th>X좌표</th><td>%f</td></tr>\n" +
+                    "            <tr><th>Y좌표</th><td>%f</td></tr>\n" +
+                    "            <tr><th>작업일자</th><td>%s</td></tr>\n" +
                     "        </table>", mainHome.getDistance(),
                     mainHome.getXSwifiMgrNo(),
                     mainHome.getXSwifiWrdofc(),

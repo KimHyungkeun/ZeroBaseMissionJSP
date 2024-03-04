@@ -5,11 +5,23 @@
     <title>와이파이 정보 구하기</title>
 </head>
 <style>
-    table, th, td {
+    table, th, td{
+        border-collapse: collapse;
         border: 1px solid;
+        border-color: gray;
     }
     table {
         width: 100%;
+    }
+    tr:nth-child(odd){background-color: #f2f2f2}
+    th {
+        background-color: #04AA6D;
+        color: white;
+        height: 50px;
+        text-align:center;
+    }
+    td {
+        color: black;
     }
 </style>
 <body>
@@ -34,58 +46,47 @@
 </p>
 
 <table id="main_table">
-    <thead>
-        <tr>
-            <th>거리(Km)</th>
-            <th>관리번호</th>
-            <th>자치구</th>
-            <th>와이파이명</th>
-            <th>도로명주소</th>
-            <th>상세주소</th>
-            <th>설치위치(층)</th>
-            <th>설치유형</th>
-            <th>설치기관</th>
-            <th>서비스구분</th>
-            <th>망종류</th>
-            <th>설치년도</th>
-            <th>실내외구분</th>
-            <th>WiFi 접속환경</th>
-            <th>X좌표</th>
-            <th>Y좌표</th>
-            <th>작업일자</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    </tbody>
+    <tr>
+        <th>거리(Km)</th>
+        <th>관리번호</th>
+        <th>자치구</th>
+        <th>와이파이명</th>
+        <th>도로명주소</th>
+        <th>상세주소</th>
+        <th>설치위치(층)</th>
+        <th>설치유형</th>
+        <th>설치기관</th>
+        <th>서비스구분</th>
+        <th>망종류</th>
+        <th>설치년도</th>
+        <th>실내외구분</th>
+        <th>WiFi 접속환경</th>
+        <th>X좌표</th>
+        <th>Y좌표</th>
+        <th>작업일자</th>
+    </tr>
 </table>
 
 <script>
 
-
-
     function getPos() {
-
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                document.getElementById('lat').value = pos.coords.latitude;
-                document.getElementById('lnt').value = pos.coords.longitude;
-            });
-
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            document.getElementById("lat").value = pos.coords.latitude;
+            document.getElementById("lnt").value = pos.coords.longitude;
 
             $.ajax({
                 type: "POST", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
                 url: "./JavaExecute/insertHistorysDB.jsp", // Java 코드를 실행할 JSP 파일의 경로
                 data: { lat: document.getElementById("lat").value, lnt: document.getElementById("lnt").value },
                 success: function() {
-                    console.log("히스토리 추가")
+                    console.log("위치 정보 히스토리 추가")
                 },
                 error: function(xhr, status, error) {
                     // 오류 처리
                     alert("오류 발생: " + error);
                 }
             });
-
-
+        });
     }
     function getNearWifi() {
         $.ajax({

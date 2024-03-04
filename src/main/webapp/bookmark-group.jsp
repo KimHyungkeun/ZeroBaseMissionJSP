@@ -7,11 +7,25 @@
     <title>북마크 그룹</title>
 </head>
 <style>
-    table, th, td {
+    table, th, td{
+        border-collapse: collapse;
         border: 1px solid;
+        border-color: gray;
     }
+
     table {
         width: 100%;
+    }
+    tr:nth-child(odd){background-color: #f2f2f2}
+    tr {height : 30px}
+    th {
+        background-color: #04AA6D;
+        color: white;
+        height: 50px;
+        text-align:center;
+    }
+    td {
+        color: black;
     }
 </style>
 <body>
@@ -38,7 +52,6 @@
         selectDB.disconnect();
 
         out.write("<table>");
-        out.write("<thead>");
         out.write("<tr>");
         out.write("<th>ID</th>");
         out.write("<th>북마크 이름</th>");
@@ -47,8 +60,6 @@
         out.write("<th>수정일자</th>");
         out.write("<th>비고</th>");
         out.write("</tr>");
-        out.write("</thead>");
-        out.write("<tbody>");
         for (BookMarkGroup ele : bookMarkGroupList) {
             out.write("<tr" + "id="+ele.getId() + ">");
             out.write("<td>" + ele.getId() + "</td>");
@@ -60,10 +71,9 @@
             } else {
                 out.write("<td></td>");
             }
-            out.write(String.format("<td><a href=\"./bookmark-group-edit.jsp?id=%d\">수정</a> <a href=\"./bookmark-group-delete.jsp?id=%d\">삭제</a></td>", ele.getId(), ele.getId()));
+            out.write(String.format("<td style=\"text-align:center;\"><a href=\"./bookmark-group-edit.jsp?id=%d\">수정</a> <a href=\"./bookmark-group-delete.jsp?id=%d\">삭제</a></td>", ele.getId(), ele.getId()));
             out.write("</tr>");
         }
-        out.write("</tbody>");
         out.write("</table>");
     %>
     <script>

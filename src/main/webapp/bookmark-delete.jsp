@@ -7,11 +7,24 @@
     <title>북마크 삭제</title>
 </head>
 <style>
-    table, th, td {
+    table, th, td{
+        border-collapse: collapse;
         border: 1px solid;
+        border-color: gray;
     }
     table {
-        width: 100%;
+        width: 60%;
+    }
+    tr:nth-child(odd){background-color: #f2f2f2}
+    tr {height : 30px}
+    th {
+        background-color: #04AA6D;
+        color: white;
+        height: 50px;
+        text-align:center;
+    }
+    td {
+        color: black;
     }
 </style>
 <body>
@@ -38,19 +51,19 @@
     selectDB.disconnect();
     out.write(String.format("<table>\n" +
             "    <tr>\n" +
-            "        <td>북마크 이름</td>\n" +
+            "        <th>북마크 이름</th>\n" +
             "        <td><p>%s</p></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "        <td>와이파이명</td>\n" +
+            "        <th>와이파이명</th>\n" +
             "        <td><p>%s</p></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "        <td>등록일자</td>\n" +
+            "        <th>등록일자</th>\n" +
             "        <td><p>%s</p></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "        <td><a href=\"./bookmark-list.jsp\">돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></td>\n" +
+            "        <th><a href=\"./bookmark-list.jsp\">돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></th>\n" +
             "    </tr>\n" +
             "</table>", bookMarkList.getBookmarkGroupName(), bookMarkList.getWifiName(), bookMarkList.getRegisterDate()));
 %>

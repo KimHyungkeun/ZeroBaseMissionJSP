@@ -8,11 +8,25 @@
     <title>위치 히스토리 목록</title>
 </head>
 <style>
-    table, th, td {
+    table, th, td{
+        border-collapse: collapse;
         border: 1px solid;
+        border-color: gray;
+        text-align:center;
     }
+
     table {
         width: 100%;
+    }
+    tr:nth-child(odd){background-color: #f2f2f2}
+    tr {height : 30px}
+    th {
+        background-color: #04AA6D;
+        color: white;
+        height: 50px;
+    }
+    td {
+        color: black;
     }
 </style>
 <body>
@@ -23,10 +37,13 @@
     <a href="historys.jsp">위치 히스토리 목록</a>
     |
     <a href="./load-wifi.jsp">OpenAPI 와이파이 정보 가져오기</a>
+    |
+    <a href="./bookmark-list.jsp">북마크 보기</a>
+    |
+    <a href="./bookmark-group.jsp">북마크 그룹 관리</a>
 </p>
 
 <table>
-    <thead>
         <tr>
             <th>ID</th>
             <th>X좌표</th>
@@ -34,7 +51,6 @@
             <th>조회일자</th>
             <th>비고</th>
         </tr>
-    </thead>
     <tbody>
         <%
             SelectDB selectDB = new SelectDB();

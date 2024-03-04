@@ -5,11 +5,25 @@
     <title>북마크 그룹 추가</title>
 </head>
 <style>
-    table, th, td {
+    table, th, td{
+        border-collapse: collapse;
         border: 1px solid;
+        border-color: gray;
     }
+
     table {
-        width: 100%;
+        width: 60%;
+    }
+    tr:nth-child(odd){background-color: #f2f2f2}
+    tr {height : 30px}
+    th {
+        background-color: #04AA6D;
+        color: white;
+        height: 50px;
+        text-align:center;
+    }
+    td {
+        color: black;
     }
 </style>
     <body>
@@ -27,15 +41,15 @@
         </p>
     <table>
         <tr>
-            <td>북마크 그룹 이름</td>
+            <th>북마크 그룹 이름</th>
             <td><input type="text" id="groupName" value=""></td>
         </tr>
         <tr>
-            <td>순서</td>
+            <th>순서</th>
             <td><input type="text" id="orders" value=""></td>
         </tr>
         <tr>
-            <td><input style="text-align: center;" type="button" value="추가" onclick="addGroupName()"></td>
+            <th><input type="button" value="추가" onclick="addGroupName()"></th>
         </tr>
     </table>
     <script>
