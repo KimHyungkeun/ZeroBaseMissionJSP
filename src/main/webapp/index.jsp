@@ -157,10 +157,6 @@
         });
     }
 
-    function goUrl(mgrNo) {
-
-    }
-
 
 </script>
 </body>

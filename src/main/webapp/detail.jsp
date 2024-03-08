@@ -57,7 +57,7 @@
                     "            <tr><th>거리(Km)</th><td>%s</td></tr>\n" +
                     "            <tr><th>관리번호</th><td>%s</td></tr>\n" +
                     "            <tr><th>자치구</th><td>%s</td></tr>\n" +
-                    "            <tr><th>와이파이명</th><td>%s</td></tr>\n" +
+                    "            <tr><th>와이파이명</th><td><a href='#' onClick=history.back();>%s</a></td></tr>\n" +
                     "            <tr><th>도로명주소</th><td>%s</td></tr>\n" +
                     "            <tr><th>상세주소</th><td>%s</td></tr>\n" +
                     "            <tr><th>설치위치(층)</th><td>%s</td></tr>\n" +
