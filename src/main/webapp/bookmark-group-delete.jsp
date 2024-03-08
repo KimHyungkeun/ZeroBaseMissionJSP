@@ -31,7 +31,7 @@
         <td><input type="text" id="orders" value=""></td>
     </tr>
     <tr>
-        <td colspan="100" style="text-align: center"><a href="./bookmark-group.jsp">돌아가기</a> | <input type="button" value="삭제" onclick="deleteBookMarkGroup()"></td>
+        <td colspan="100" style="text-align: center"><a href='#' onClick=history.back()>돌아가기</a> | <input type="button" value="삭제" onclick="deleteBookMarkGroup()"></td>
     </tr>
 </table>
 <%

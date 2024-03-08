@@ -43,7 +43,7 @@
             "        <td><p>%s</p></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "        <td colspan=\"100\" style=\"text-align: center\"><a href=\"./bookmark-list.jsp\">돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></td>\n" +
+            "        <td colspan=\"100\" style=\"text-align: center\"><a href='#' onClick=history.back()>돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></td>\n" +
             "    </tr>\n" +
             "</table>", bookMarkList.getBookmarkGroupName(), bookMarkList.getWifiName(), bookMarkList.getRegisterDate()));
 %>
