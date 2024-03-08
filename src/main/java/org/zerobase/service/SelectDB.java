@@ -19,7 +19,7 @@ public class SelectDB extends MariaDBConnector{
     }
 
     public boolean selectIsMainHomeExist (String id, String name, Statement stmt) {
-        String selectSQL = String.format("SELECT count(1) FROM %s WHERE x_swifi_mgr_no = '%s' AND x_swifi_main_nm = '%s'", MAINHOME_TB, id, name);
+        String selectSQL = String.format("SELECT count(1) FROM %s WHERE x_swifi_mgr_no = '%s' AND x_swifi_main_nm = '%s'", mainhomeTB, id, name);
         ResultSet rs;
         try {
             // SQL실행
@@ -39,7 +39,7 @@ public class SelectDB extends MariaDBConnector{
     }
 
     public List<Historys> selectHistorysData() {
-        String selectSQL = String.format("SELECT * FROM %s ORDER BY id DESC", HISTORYS_TB);
+        String selectSQL = String.format("SELECT * FROM %s ORDER BY id DESC", historysTB);
         List<Historys> historysList = new ArrayList<>();
         try {
             stmt = con.createStatement();
@@ -126,7 +126,7 @@ public class SelectDB extends MariaDBConnector{
 
     public List<BookMarkGroup> selectBookMarkGroupData() {
         List<BookMarkGroup> bookMarkGroupList = new ArrayList<>();
-        String selectSQL = String.format("SELECT * FROM %s ORDER BY orders", BOOKMARKGROUP_TB);
+        String selectSQL = String.format("SELECT * FROM %s ORDER BY orders", bookmarkgroupTB);
 
         try {
             // 객체 생성
@@ -155,7 +155,7 @@ public class SelectDB extends MariaDBConnector{
 
     public BookMarkGroup selectOneBookMarkGroupData(int id) {
         BookMarkGroup bookMarkGroup = new BookMarkGroup();
-        String selectSQL = String.format("SELECT * FROM %s WHERE id=%d", BOOKMARKGROUP_TB, id);
+        String selectSQL = String.format("SELECT * FROM %s WHERE id=%d", bookmarkgroupTB, id);
 
         try {
             // 객체 생성
@@ -182,7 +182,7 @@ public class SelectDB extends MariaDBConnector{
     public List<BookMark> selectBookMarkListData() {
 
         List<BookMark> bookMarkList = new ArrayList<>();
-        String selectSQL = String.format("SELECT * FROM %s", BOOKMARK_TB);
+        String selectSQL = String.format("SELECT * FROM %s", bookmarkTB);
 
         try {
             // 객체 생성
@@ -209,10 +209,10 @@ public class SelectDB extends MariaDBConnector{
         return bookMarkList;
     }
 
-    public BookMark selectOneBookMarkListInfo(int id) {
+    public BookMark selectOneBookMarkInfo(int id) {
 
         BookMark bookMark = new BookMark();
-        String selectSQL = String.format("SELECT * FROM %s WHERE id = %d", BOOKMARK_TB, id);
+        String selectSQL = String.format("SELECT * FROM %s WHERE id = %d", bookmarkTB, id);
 
         try {
             // 객체 생성
@@ -245,7 +245,7 @@ public class SelectDB extends MariaDBConnector{
 
 
         try {
-            String selectSQL = String.format("SELECT * FROM %s WHERE x_swifi_mgr_no = '%s'", MAINHOME_TB,mgrNo);
+            String selectSQL = String.format("SELECT * FROM %s WHERE x_swifi_mgr_no = '%s'", mainhomeTB,mgrNo);
             // 객체 생성
             stmt = con.createStatement();
             rs = stmt.executeQuery(selectSQL);
@@ -287,7 +287,7 @@ public class SelectDB extends MariaDBConnector{
     public Map<Integer, String> selectBookMarkGroupNameList() {
 
         Map<Integer, String> map = new HashMap<>();
-        String selectSQL = String.format("SELECT id, bookmark_group_name FROM %s", BOOKMARKGROUP_TB);
+        String selectSQL = String.format("SELECT id, bookmark_group_name FROM %s", bookmarkgroupTB);
 
         try {
             // 객체 생성

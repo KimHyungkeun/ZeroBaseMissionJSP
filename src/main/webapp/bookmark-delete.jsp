@@ -27,7 +27,7 @@
 
     SelectDB selectDB = new SelectDB();
     selectDB.connect();
-    BookMark bookMark = selectDB.selectOneBookMarkListInfo(id);
+    BookMark bookMark = selectDB.selectOneBookMarkInfo(id);
     selectDB.disconnect();
     out.write(String.format("<table>\n" +
             "    <tr>\n" +

@@ -10,7 +10,7 @@ public class UpdateDB extends MariaDBConnector{
 
     public void updateBookMarkGroupData(int id, String groupName, int orders) {
 
-        String updateSQL = String.format("UPDATE %s SET bookmark_group_name = '%s', orders = %d, update_date = now() WHERE id = %d", BOOKMARKGROUP_TB, groupName, orders, id);
+        String updateSQL = String.format("UPDATE %s SET bookmark_group_name = '%s', orders = %d, update_date = now() WHERE id = %d", bookmarkgroupTB, groupName, orders, id);
 
         try {
             stmt = con.createStatement();

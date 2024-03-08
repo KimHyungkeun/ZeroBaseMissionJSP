@@ -4,10 +4,10 @@ import java.sql.*;
 
 public class MariaDBConnector {
 
-    protected static String MAINHOME_TB = "mainhome";
-    protected static String HISTORYS_TB = "historys";
-    protected static String BOOKMARK_TB = "bookmark";
-    protected static String BOOKMARKGROUP_TB = "bookmarkgroup";
+    protected String mainhomeTB;
+    protected String historysTB;
+    protected String bookmarkTB;
+    protected String bookmarkgroupTB;
     protected Connection con;
     protected Statement stmt;
     protected ResultSet rs;
@@ -29,6 +29,11 @@ public class MariaDBConnector {
         this.database = "zerobase_mission1";
         this.userName = "root";
         this.password = "root";
+
+        this.mainhomeTB = "mainhome";
+        this.historysTB = "historys";
+        this.bookmarkTB = "bookmark";
+        this.bookmarkgroupTB = "bookmarkgroup";
     }
 
     public void connect() {
