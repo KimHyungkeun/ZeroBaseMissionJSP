@@ -1,7 +1,7 @@
 package org.zerobase.service;
 
+import org.zerobase.dto.BookMark;
 import org.zerobase.dto.BookMarkGroup;
-import org.zerobase.dto.BookMarkList;
 import org.zerobase.dto.Historys;
 import org.zerobase.dto.MainHome;
 
@@ -19,7 +19,7 @@ public class SelectDB extends MariaDBConnector{
     }
 
     public boolean selectIsMainHomeExist (String id, String name, Statement stmt) {
-        String selectSQL = String.format("SELECT count(1) FROM mainhome WHERE x_swifi_mgr_no = '%s' AND x_swifi_main_nm = '%s'", id, name);
+        String selectSQL = String.format("SELECT count(1) FROM %s WHERE x_swifi_mgr_no = '%s' AND x_swifi_main_nm = '%s'", MAINHOME_TB, id, name);
         ResultSet rs;
         try {
             // SQL실행
@@ -39,7 +39,7 @@ public class SelectDB extends MariaDBConnector{
     }
 
     public List<Historys> selectHistorysData() {
-        String selectSQL = String.format("SELECT * FROM historys ORDER BY id DESC");
+        String selectSQL = String.format("SELECT * FROM %s ORDER BY id DESC", HISTORYS_TB);
         List<Historys> historysList = new ArrayList<>();
         try {
             stmt = con.createStatement();
@@ -126,7 +126,7 @@ public class SelectDB extends MariaDBConnector{
 
     public List<BookMarkGroup> selectBookMarkGroupData() {
         List<BookMarkGroup> bookMarkGroupList = new ArrayList<>();
-        String selectSQL = "SELECT * FROM bookmarkgroup ORDER BY orders";
+        String selectSQL = String.format("SELECT * FROM %s ORDER BY orders", BOOKMARKGROUP_TB);
 
         try {
             // 객체 생성
@@ -155,7 +155,7 @@ public class SelectDB extends MariaDBConnector{
 
     public BookMarkGroup selectOneBookMarkGroupData(int id) {
         BookMarkGroup bookMarkGroup = new BookMarkGroup();
-        String selectSQL = String.format("SELECT * FROM bookmarkgroup WHERE id=%d", id);
+        String selectSQL = String.format("SELECT * FROM %s WHERE id=%d", BOOKMARKGROUP_TB, id);
 
         try {
             // 객체 생성
@@ -179,10 +179,10 @@ public class SelectDB extends MariaDBConnector{
         return bookMarkGroup;
     }
 
-    public List<BookMarkList> selectBookMarkListData() {
+    public List<BookMark> selectBookMarkListData() {
 
-        List<BookMarkList> bookMarkList = new ArrayList<>();
-        String selectSQL = "SELECT * FROM bookmarklist";
+        List<BookMark> bookMarkList = new ArrayList<>();
+        String selectSQL = String.format("SELECT * FROM %s", BOOKMARK_TB);
 
         try {
             // 객체 생성
@@ -190,7 +190,7 @@ public class SelectDB extends MariaDBConnector{
             rs = stmt.executeQuery(selectSQL);
 
             while (rs.next()) {
-                BookMarkList bookMark = new BookMarkList();
+                BookMark bookMark = new BookMark();
 
                 bookMark.setId(rs.getInt("id"));
                 bookMark.setBookmarkGroupId(rs.getInt("bookmark_group_id"));
@@ -209,10 +209,10 @@ public class SelectDB extends MariaDBConnector{
         return bookMarkList;
     }
 
-    public BookMarkList selectOneBookMarkListInfo(int id) {
+    public BookMark selectOneBookMarkListInfo(int id) {
 
-        BookMarkList bookMarkList = new BookMarkList();
-        String selectSQL = String.format("SELECT * FROM bookmarklist WHERE id = %d", id);
+        BookMark bookMark = new BookMark();
+        String selectSQL = String.format("SELECT * FROM %s WHERE id = %d", BOOKMARK_TB, id);
 
         try {
             // 객체 생성
@@ -221,12 +221,12 @@ public class SelectDB extends MariaDBConnector{
 
             while (rs.next()) {
 
-                bookMarkList.setId(rs.getInt("id"));
-                bookMarkList.setBookmarkGroupId(rs.getInt("bookmark_group_id"));
-                bookMarkList.setBookmarkGroupName(rs.getString("bookmark_group_name"));
-                bookMarkList.setWifiManagerNo(rs.getString("wifi_manager_no"));
-                bookMarkList.setWifiName(rs.getString("wifi_name"));
-                bookMarkList.setRegisterDate(rs.getTimestamp("register_date"));
+                bookMark.setId(rs.getInt("id"));
+                bookMark.setBookmarkGroupId(rs.getInt("bookmark_group_id"));
+                bookMark.setBookmarkGroupName(rs.getString("bookmark_group_name"));
+                bookMark.setWifiManagerNo(rs.getString("wifi_manager_no"));
+                bookMark.setWifiName(rs.getString("wifi_name"));
+                bookMark.setRegisterDate(rs.getTimestamp("register_date"));
 
             }
 
@@ -234,7 +234,7 @@ public class SelectDB extends MariaDBConnector{
 
         }
 
-        return bookMarkList;
+        return bookMark;
     }
 
     public MainHome selectOneWiFiInfo(String mgrNo, String lat, String lnt) {
@@ -245,7 +245,7 @@ public class SelectDB extends MariaDBConnector{
 
 
         try {
-            String selectSQL = String.format("SELECT * FROM mainhome WHERE x_swifi_mgr_no = '%s'", mgrNo);
+            String selectSQL = String.format("SELECT * FROM %s WHERE x_swifi_mgr_no = '%s'", MAINHOME_TB,mgrNo);
             // 객체 생성
             stmt = con.createStatement();
             rs = stmt.executeQuery(selectSQL);
@@ -287,7 +287,7 @@ public class SelectDB extends MariaDBConnector{
     public Map<Integer, String> selectBookMarkGroupNameList() {
 
         Map<Integer, String> map = new HashMap<>();
-        String selectSQL = "SELECT id, bookmark_group_name FROM bookmarkgroup";
+        String selectSQL = String.format("SELECT id, bookmark_group_name FROM %s", BOOKMARKGROUP_TB);
 
         try {
             // 객체 생성

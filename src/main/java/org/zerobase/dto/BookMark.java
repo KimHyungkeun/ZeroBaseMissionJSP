@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class BookMarkList {
+public class BookMark {
     private Integer id;
     private Integer bookmarkGroupId;
     private String bookmarkGroupName;

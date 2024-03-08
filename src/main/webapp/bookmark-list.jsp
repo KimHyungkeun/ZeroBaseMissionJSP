@@ -1,6 +1,7 @@
 <%@ page import="org.zerobase.service.SelectDB" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.zerobase.dto.BookMarkList" %>
+<%@ page import="org.zerobase.dto.BookMark" %>
+<%@ page import="org.zerobase.dto.BookMark" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -27,7 +28,7 @@
     // Java 코드 실행
     SelectDB selectDB = new SelectDB();
     selectDB.connect();
-    List<BookMarkList> bookMarkList = selectDB.selectBookMarkListData();
+    List<BookMark> bookMarkList = selectDB.selectBookMarkListData();
     selectDB.disconnect();
 
     out.write("<table>");
@@ -42,7 +43,7 @@
     if (bookMarkList.isEmpty()) {
         out.write("<tr><td colspan=\"100\">등록된 북마크가 없습니다.</td></tr>");
     } else {
-        for (BookMarkList ele : bookMarkList) {
+        for (BookMark ele : bookMarkList) {
             out.write("<tr" + "id="+ele.getId() + ">");
             out.write("<td>" + ele.getId() + "</td>");
             out.write("<td>" + ele.getBookmarkGroupName() + "</td>");

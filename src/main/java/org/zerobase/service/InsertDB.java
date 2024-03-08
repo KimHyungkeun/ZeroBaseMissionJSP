@@ -22,7 +22,7 @@ public class InsertDB extends MariaDBConnector{
         try {
             for (MainHome val : dataList) {
                 // Insert 쿼리문
-                String insertSQL = String.format(" INSERT INTO `zerobase_mission1`.`mainhome` " +
+                String insertSQL = String.format(" INSERT INTO %s " +
                                 "(`x_swifi_mgr_no`," +
                                 "`x_swifi_wrdofc`," +
                                 "`x_swifi_main_nm`," +
@@ -55,7 +55,8 @@ public class InsertDB extends MariaDBConnector{
                                 "'%s'," +
                                 "%f," +
                                 "%f," +
-                                "'%s')", val.getXSwifiMgrNo(),
+                                "'%s')", MAINHOME_TB,
+                        val.getXSwifiMgrNo(),
                         val.getXSwifiWrdofc(),
                         val.getXSwifiMainNm(),
                         val.getXSwifiAdres1(),
@@ -72,7 +73,7 @@ public class InsertDB extends MariaDBConnector{
                         val.getLnt(),
                         val.getWorkDttm());
 
-                String updateSQL = String.format("UPDATE `zerobase_mission1`.`mainhome` " +
+                String updateSQL = String.format("UPDATE %s " +
                                 "SET " +
                                 "`x_swifi_mgr_no` = '%s'," +
                                 "`x_swifi_wrdofc` = '%s'," +
@@ -91,6 +92,7 @@ public class InsertDB extends MariaDBConnector{
                                 "`lnt` = %f," +
                                 "`work_dttm` = '%s' " +
                                 "WHERE `x_swifi_mgr_no` = '%s' AND `x_swifi_main_nm` = '%s'",
+                        MAINHOME_TB,
                         val.getXSwifiMgrNo(),
                         val.getXSwifiWrdofc(),
                         val.getXSwifiMainNm(),
@@ -133,7 +135,7 @@ public class InsertDB extends MariaDBConnector{
         double dblLat = Double.parseDouble(lat);
         double dblLnt = Double.parseDouble(lnt);
 
-        String insertSQL = String.format("INSERT INTO historys (x_pos, y_pos, checkDate) VALUES (%f, %f, now())", dblLat, dblLnt);
+        String insertSQL = String.format("INSERT INTO %s (x_pos, y_pos, checkDate) VALUES (%f, %f, now())", HISTORYS_TB, dblLat, dblLnt);
 
         try {
             stmt = con.createStatement();
@@ -147,7 +149,7 @@ public class InsertDB extends MariaDBConnector{
 
     public void insertBookMarkGroupData(String groupName, int orders) {
         ManageString manageString = new ManageString();
-        String insertSQL = String.format("INSERT INTO bookmarkgroup (bookmark_group_name, orders, register_date) VALUES ('%s', %d, now())", manageString.manageApostrophe(groupName), orders);
+        String insertSQL = String.format("INSERT INTO %s (bookmark_group_name, orders, register_date) VALUES ('%s', %d, now())", BOOKMARKGROUP_TB, manageString.manageApostrophe(groupName), orders);
 
         try {
             stmt = con.createStatement();
@@ -161,7 +163,7 @@ public class InsertDB extends MariaDBConnector{
 
     public void insertBookMarkData(int bookMarkGroupId, String bookMarkGroupName, String wifiMgrNo, String wifiName) {
 
-        String insertSQL = String.format("INSERT INTO bookmarklist (bookmark_group_id, bookmark_group_name, wifi_manager_no, wifi_name, register_date) VALUES (%d, '%s', '%s', '%s', now())", bookMarkGroupId, bookMarkGroupName, wifiMgrNo, wifiName);
+        String insertSQL = String.format("INSERT INTO %s (bookmark_group_id, bookmark_group_name, wifi_manager_no, wifi_name, register_date) VALUES (%d, '%s', '%s', '%s', now())", BOOKMARK_TB, bookMarkGroupId, bookMarkGroupName, wifiMgrNo, wifiName);
         try {
             stmt = con.createStatement();
             // SQL실행

@@ -3,6 +3,11 @@ package org.zerobase.service;
 import java.sql.*;
 
 public class MariaDBConnector {
+
+    protected static String MAINHOME_TB = "mainhome";
+    protected static String HISTORYS_TB = "historys";
+    protected static String BOOKMARK_TB = "bookmark";
+    protected static String BOOKMARKGROUP_TB = "bookmarkgroup";
     protected Connection con;
     protected Statement stmt;
     protected ResultSet rs;

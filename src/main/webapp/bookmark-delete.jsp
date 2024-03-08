@@ -1,5 +1,5 @@
 <%@ page import="org.zerobase.service.SelectDB" %>
-<%@ page import="org.zerobase.dto.BookMarkList" %>
+<%@ page import="org.zerobase.dto.BookMark" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
@@ -27,7 +27,7 @@
 
     SelectDB selectDB = new SelectDB();
     selectDB.connect();
-    BookMarkList bookMarkList = selectDB.selectOneBookMarkListInfo(id);
+    BookMark bookMark = selectDB.selectOneBookMarkListInfo(id);
     selectDB.disconnect();
     out.write(String.format("<table>\n" +
             "    <tr>\n" +
@@ -45,7 +45,7 @@
             "    <tr>\n" +
             "        <td colspan=\"100\" style=\"text-align: center\"><a href='#' onClick=history.back()>돌아가기</a> | <input style=\"text-align: center;\" type=\"button\" value=\"삭제\" onclick=\"deleteBookMark()\"></td>\n" +
             "    </tr>\n" +
-            "</table>", bookMarkList.getBookmarkGroupName(), bookMarkList.getWifiName(), bookMarkList.getRegisterDate()));
+            "</table>", bookMark.getBookmarkGroupName(), bookMark.getWifiName(), bookMark.getRegisterDate()));
 %>
 <script>
     function deleteBookMark() {

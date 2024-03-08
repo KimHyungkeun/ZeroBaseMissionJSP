@@ -10,7 +10,7 @@ public class DeleteDB extends MariaDBConnector{
 
     public void deleteHistorysData(int id) {
 
-        String deleteSQL = String.format("DELETE FROM historys WHERE id = %d", id);
+        String deleteSQL = String.format("DELETE FROM %s WHERE id = %d", HISTORYS_TB, id);
 
         try {
             stmt = con.createStatement();
@@ -25,7 +25,7 @@ public class DeleteDB extends MariaDBConnector{
 
     public void deleteBookMarkGroupData(int id) {
 
-        String deleteSQL = String.format("DELETE FROM bookmarkgroup WHERE id = %d", id);
+        String deleteSQL = String.format("DELETE FROM %s WHERE id = %d", BOOKMARKGROUP_TB,id);
 
         try {
             stmt = con.createStatement();
@@ -38,7 +38,7 @@ public class DeleteDB extends MariaDBConnector{
     }
 
     public void deleteBookMarkData(int id) {
-        String deleteSQL = String.format("DELETE FROM bookmarklist WHERE id = %d", id);
+        String deleteSQL = String.format("DELETE FROM %s WHERE id = %d", BOOKMARK_TB, id);
 
         try {
             stmt = con.createStatement();
