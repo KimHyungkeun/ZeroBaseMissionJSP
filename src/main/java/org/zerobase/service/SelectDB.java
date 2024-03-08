@@ -50,7 +50,7 @@ public class SelectDB extends MariaDBConnector{
                 historys.setId(rs.getInt("id"));
                 historys.setXPos(rs.getDouble("x_pos"));
                 historys.setYPos(rs.getDouble("y_pos"));
-                historys.setCheckDate(rs.getTimestamp("checkDate"));
+                historys.setCheckDate(rs.getTimestamp("check_date"));
                 historysList.add(historys);
             }
 
