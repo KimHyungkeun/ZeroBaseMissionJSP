@@ -9,6 +9,7 @@
 - Java 1.8 (openjdk1.8.0_361)
 - Apache Tomcat 8.5.99
 - MariaDB 11.3.1
+- mariadb-java-client-3.0.4.jar (src/main/webapp/WEB-INF/lib에 있음)
 
 ## 3. 사용 전 필수 진행 (MariaDB 기준)
 - mariadb_table_init.sql을 mariadb에 먼저 실행할 것
