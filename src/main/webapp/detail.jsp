@@ -22,7 +22,7 @@
         <p>
             <a href="./">홈</a>
             |
-            <a href="historys.jsp">위치 히스토리 목록</a>
+            <a href="./historys.jsp">위치 히스토리 목록</a>
             |
             <a href="./load-wifi.jsp">OpenAPI 와이파이 정보 가져오기</a>
             |
