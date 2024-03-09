@@ -53,7 +53,7 @@
 
 <script>
     
-function getPos() {
+    function getPos() {
         navigator.geolocation.getCurrentPosition(function(pos) {
             document.getElementById("lat").value = pos.coords.latitude;
             document.getElementById("lnt").value = pos.coords.longitude;
