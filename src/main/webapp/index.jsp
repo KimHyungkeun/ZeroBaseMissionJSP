@@ -52,26 +52,7 @@
 </table>
 
 <script>
-    function getPos() {
-        navigator.geolocation.getCurrentPosition(function(pos) {
-            document.getElementById("lat").value = pos.coords.latitude;
-            document.getElementById("lnt").value = pos.coords.longitude;
-
-            $.ajax({
-                type: "POST", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
-                url: "./JavaExecute/insertHistorysDB.jsp", // Java 코드를 실행할 JSP 파일의 경로
-                data: { lat: document.getElementById("lat").value, lnt: document.getElementById("lnt").value },
-                success: function() {
-                    console.log("위치 정보 히스토리 추가")
-                },
-                error: function(xhr, status, error) {
-                    // 오류 처리
-                    alert("오류 발생: " + error);
-                }
-            });
-        });
-    }
-
+    
     function getNearWifi() {
         $.ajax({
             type: "GET", // 또는 "GET" 등 원하는 HTTP 메소드를 사용할 수 있습니다.
