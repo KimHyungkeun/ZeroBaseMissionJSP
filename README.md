@@ -12,9 +12,6 @@
 
 ## 3. 사용 전 필수 진행 (MariaDB 기준)
 - mariadb_table_init.sql을 mariadb에 먼저 실행할 것
-- id : root
-- pw : root
-- port : 3306 (기본포트)
 
 ## 4. DTO 클래스
 ![Mission1_DTO_Image](https://github.com/KimHyungkeun/ZeroBaseMissionJSP/assets/12759500/15ca6bc4-d749-42f4-a5a3-3ff51473493c)
